@@ -120,7 +120,7 @@ setPost({
                 name="categoryid"
                 onChange={fieldChanged}
                  value={post.categoryid}
-              >
+                >
                 <option value="">Select a category</option> {/* Placeholder option */}
                 {categories.map((category) => (
                   <option value={category.Id} key={category.Id}>
