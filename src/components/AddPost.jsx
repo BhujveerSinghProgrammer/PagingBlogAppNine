@@ -64,6 +64,7 @@ doCreatePost(post).then(data=>{
 toast.success(data.mgs);
 }).catch((error)=>{
   toast.error(error);
+
 })
 
 }
@@ -71,7 +72,6 @@ toast.success(data.mgs);
     <div className="wrapper my-3">
       <Card className="shadow mt-3">
         <CardBody>
-          {JSON.stringify(post)}
           <h3>What's going on in your mind?</h3>
           <Form onSubmit={createPost} >
             <div className="my-3">
