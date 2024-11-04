@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import Base from "../components/Base";
+import NewFeed from "../components/NewFeed";
 
 const Home=()=>{
+
+
   return (
-   <Base><h1>This is our Home Page with Header and Footer</h1></Base>
+   <Base>
+   <NewFeed/>
+   </Base>
   )
 }
 
