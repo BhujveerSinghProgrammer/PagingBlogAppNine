@@ -52,7 +52,7 @@ const logout=()=>
           <Nav className="me-auto" navbar>
             
               <NavItem>
-              <NavLink tag={ReactLink} to="/">Home</NavLink>
+              <NavLink tag={ReactLink} to="/">News Feed</NavLink>
             </NavItem>
 
             
