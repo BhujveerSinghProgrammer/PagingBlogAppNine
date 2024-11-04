@@ -46,7 +46,7 @@ const logout=()=>
   return (
     <div>
       <Navbar expand={"lg"} color='success' dark fixed='' className='px-4'  >
-      <NavbarBrand tag={ReactLink} to="/">MyBlogs</NavbarBrand>
+      <NavbarBrand tag={ReactLink} to="/">Veer Blogs</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>

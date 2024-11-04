@@ -36,6 +36,14 @@ const[user,setUser]=  useState(undefined);
     });
   };
 
+  //resetting the form
+const resetData=()=>{
+setPost({   
+    title: "",
+    content: "",
+    categoryid: ""})
+}
+
   const contentFieldChanged = (newContent) => {
     setPost({ ...post, content: newContent });
   };
@@ -62,6 +70,11 @@ if(post.categoryid==='')
 post['userId']=user.Id;  //adding a field to the post object
 doCreatePost(post).then(data=>{
 toast.success(data.mgs);
+setPost({
+    title: "",
+    content: "",
+    categoryid: ""
+})
 }).catch((error)=>{
   toast.error(error);
 
@@ -83,6 +96,7 @@ toast.success(data.mgs);
                 className="rounded-0"
                 name="title"
                 onChange={fieldChanged}
+                value={post.title}
               />
             </div>
 
@@ -93,6 +107,7 @@ toast.success(data.mgs);
                 value={post.content}
                 tabIndex={1}
                 onChange={contentFieldChanged} // Use onBlur for better compatibility
+                
               />
             </div>
 
@@ -104,6 +119,7 @@ toast.success(data.mgs);
                 className="rounded-0"
                 name="categoryid"
                 onChange={fieldChanged}
+                 value={post.categoryid}
               >
                 <option value="">Select a category</option> {/* Placeholder option */}
                 {categories.map((category) => (
@@ -118,7 +134,7 @@ toast.success(data.mgs);
               <Button className="rounded-0" color="primary">
                 Create Post
               </Button>
-              <Button className="rounded-0 ms-2" color="danger">
+              <Button onClick={resetData}  className="rounded-0 ms-2" color="danger">
                 Reset
               </Button>
             </Container>
