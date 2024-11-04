@@ -22,7 +22,6 @@ const[user,setUser]=  useState(undefined);
     setUser(CurrentUser());
     loadAllCategories()
       .then((data) => {
-        console.log(data);
         setCategories(data);
       })
       .catch((error) => {
@@ -61,14 +60,10 @@ if(post.categoryid==='')
 }
 //submit the form on server
 post['userId']=user.Id;  //adding a field to the post object
-console.log(post);
-
 doCreatePost(post).then(data=>{
 toast.success(data.mgs);
-console.log(post);
 }).catch((error)=>{
-  alert('error');
-  console.log(error);
+  toast.error(error);
 })
 
 }
