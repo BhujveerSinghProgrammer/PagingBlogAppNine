@@ -77,7 +77,7 @@ const logout=()=>
               <DropdownToggle nav caret>
                 Options
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu end>
                
                 <DropdownItem tag={ReactLink} to="/ContactUs"  >Contact Us</DropdownItem>
                  <DropdownItem href="https://facebook.com"  >Facebook</DropdownItem>

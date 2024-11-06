@@ -47,7 +47,6 @@ export const CurrentUser=()=>
   if(isLoggedIn())
   {
     return JSON.parse(localStorage.getItem("data"))?.user; //converting to json object and using safe operator here "?",this question mark is safe operator,if we are getting null in this then it will work fine.
-
   }
   else
   {

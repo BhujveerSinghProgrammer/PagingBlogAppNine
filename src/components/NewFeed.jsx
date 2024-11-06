@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { loadAllPosts } from '../services/post-service';
-function NewFeed() {
+import { Row,Col } from 'reactstrap';
+import Posts from './Posts';
+
+
+function NewFeed() 
+{
+const[postContent,setPostContent]=useState(null);
+
   useEffect(()=>{
   //load all the posts from
   loadAllPosts().then((data)=>{
     console.log(data);
+    setPostContent(data);
   }).catch(error=>{
     console.log(error);
   })
@@ -13,9 +21,29 @@ function NewFeed() {
 );
 
   return (
-    <div>
-      <h1>This is New Feed </h1>
-    </div>
+
+   <div className="container-fluid">
+<Row>
+  <Col md={{
+    size:10,
+    offset:1
+  }} >
+    {/* {JSON.stringify(postContent)} */}
+    <h1>Blogs Count ({postContent?.TotalElements})</h1>
+  
+   
+  {
+    postContent?.Contents?.map((post)=>(
+      <Posts post={post} key={post.Id} />
+    ))
+  }
+
+
+  </Col>
+</Row>
+   </div>
+
+   
   )
 }
 

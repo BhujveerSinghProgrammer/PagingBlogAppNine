@@ -9,5 +9,5 @@ export const createPost=(postData)=>{
 //All get posts apis are public so use "myaxios" instead of privateAxious
 
 export const loadAllPosts=()=>{
-  return myAxious.get('/posts').then(response=>response.data); 
+  return myAxious.get('/api/ReactJsApis/getAllposts').then(response=>response.data); 
 }
