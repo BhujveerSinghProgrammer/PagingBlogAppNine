@@ -11,3 +11,11 @@ export const createPost=(postData)=>{
 export const loadAllPosts=()=>{
   return myAxious.get('/api/ReactJsApis/getAllposts').then(response=>response.data); 
 }
+
+//get posts by pagenumber and pazesize
+
+
+export const loadAllPostsByPageNumberandPageSize=(PageNumberInput,PageSizeInput)=>{
+  return myAxious.get('/api/ReactJsApis/getpostsByPageNumberAndPageSize?PageNumberInput=${PageNumberInput}&PageSizeInput=${PageSizeInput}').then(response=>response.data); 
+}
+

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
-import { loadAllPosts } from '../services/post-service';
+import { loadAllPosts,loadAllPostsByPageNumberandPageSize } from '../services/post-service';
 import { Row,Col,Pagination,PaginationItem,PaginationLink, Container } from 'reactstrap';
 import Posts from './Posts';
+import { toast } from 'react-toastify';
 
 
 function NewFeed() 
@@ -25,9 +26,21 @@ const[postContent,setPostContent]=useState(
     setPostContent(data);
   }).catch(error=>{
     console.log(error);
+    toast.error("Error in Loading All Posts");
   })
 },[]
 );
+
+const changePage=(PageNumberInput=0,PageSizeInput=3)=>
+{
+  loadAllPostsByPageNumberandPageSize(PageNumberInput,PageSizeInput).then(data=>{
+ setPostContent(data);
+  }).catch(error=>{
+    toast.error("Error in Loading Posts Pagewise");
+  })
+}
+
+
 
   return (
 
@@ -62,7 +75,7 @@ const[postContent,setPostContent]=useState(
 
 {
 [...Array(postContent.TotalPages)].map((item,index)=>(
-  <PaginationItem active={index==postContent.PageNumber}  key={index} >
+  <PaginationItem onClick={()=>{changePage(index,5)}} active={index==postContent.PageNumber}  key={index} >
     <PaginationLink >
     {index+1}
     </PaginationLink>

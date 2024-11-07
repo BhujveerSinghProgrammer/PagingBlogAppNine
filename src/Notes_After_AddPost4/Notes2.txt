@@ -47,4 +47,23 @@ Ans:-
   ))
 }
 
-Q3.?
+Q3.? How to pass parameters to a function new way?
+Ans:-
+
+
+const changePage=(PageNumberInput=0,PageSizeInput=3)=>
+{
+  loadAllPostsByPageNumberandPageSize(PageNumberInput,PageSizeInput).then(data=>{
+ setPostContent(data);
+  }).catch(error=>{
+    toast.error("Error in Loading Posts Pagewise");
+  })
+}
+
+onClick={()=>{changePage(index,5)}} 
+
+or
+Note:- if we will not pass any value to PageSizeInput as 5 then it will automatically take the default value which is set to 5
+
+
+onClick={()=>{changePage(index)}} 
