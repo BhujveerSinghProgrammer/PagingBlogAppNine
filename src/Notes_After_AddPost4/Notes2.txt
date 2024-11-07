@@ -25,7 +25,9 @@ we have postContent.TotalElements=21
 Q2.?How to disable the previous button and active current page.
 
 Ans:-
-==>disabling previous button in pagination
+==>disabling previous button in pagination:- it will disable if {postContent.PageNumber==1}
+
+
 
  <PaginationItem disabled={postContent.PageNumber==1}>
     <PaginationLink previous>
@@ -33,7 +35,7 @@ Ans:-
     </PaginationLink>
   </PaginationItem>
 
-==>Active current page
+==>Active current page:- it will be active if {index==postContent.PageNumber}
 
 {
 [...Array(postContent.TotalPages)].map((item,index)=>(

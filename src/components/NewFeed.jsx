@@ -52,7 +52,7 @@ const[postContent,setPostContent]=useState(
 <Container className='text-center mt-1'>
   <Pagination>
   
-  <PaginationItem disabled={postContent.PageNumber==1}>
+  <PaginationItem disabled={postContent.PageNumber==0}>
     <PaginationLink previous>
 
     </PaginationLink>
@@ -63,7 +63,7 @@ const[postContent,setPostContent]=useState(
 {
 [...Array(postContent.TotalPages)].map((item,index)=>(
   <PaginationItem active={index==postContent.PageNumber}  key={index} >
-    <PaginationLink>
+    <PaginationLink >
     {index+1}
     </PaginationLink>
   </PaginationItem>
@@ -71,12 +71,7 @@ const[postContent,setPostContent]=useState(
 }
 
 
-
-
-
-
-
-<PaginationItem>
+<PaginationItem disabled={postContent.LastPage==postContent.PageNumber}>
     <PaginationLink next>
 
     </PaginationLink>
