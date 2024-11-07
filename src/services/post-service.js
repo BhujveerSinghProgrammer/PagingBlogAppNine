@@ -16,6 +16,10 @@ export const loadAllPosts=()=>{
 
 
 export const loadAllPostsByPageNumberandPageSize=(PageNumberInput,PageSizeInput)=>{
-  return myAxious.get('/api/ReactJsApis/getpostsByPageNumberAndPageSize?PageNumberInput=${PageNumberInput}&PageSizeInput=${PageSizeInput}').then(response=>response.data); 
+  return myAxious.get(`/api/ReactJsApis/getpostsByPageNumberAndPageSize?PageNumberInput=${PageNumberInput}&PageSizeInput=${PageSizeInput}`).then(response=>response.data); 
 }
+
+//Note :- if we use parameters given below:-
+//  (`/api/ReactJsApis/getpostsByPageNumberAndPageSize?PageNumberInput=${PageNumberInput}&PageSizeInput=${PageSizeInput}`).
+//then we will use `` but if we are using simple api then you can also use ''
 

@@ -24,6 +24,10 @@ const[postContent,setPostContent]=useState(
   loadAllPosts().then((data)=>{
     console.log(data);
     setPostContent(data);
+    console.log('details');
+    console.log(data.LastPage);
+    console.log(data.PageNumber);
+
   }).catch(error=>{
     console.log(error);
     toast.error("Error in Loading All Posts");
@@ -31,10 +35,13 @@ const[postContent,setPostContent]=useState(
 },[]
 );
 
-const changePage=(PageNumberInput=0,PageSizeInput=3)=>
+const changePage=(PageNumberInput=0,PageSizeInput=5)=>
 {
   loadAllPostsByPageNumberandPageSize(PageNumberInput,PageSizeInput).then(data=>{
  setPostContent(data);
+   console.log(PageNumberInput);
+    console.log(PageSizeInput);
+
   }).catch(error=>{
     toast.error("Error in Loading Posts Pagewise");
   })
@@ -75,7 +82,7 @@ const changePage=(PageNumberInput=0,PageSizeInput=3)=>
 
 {
 [...Array(postContent.TotalPages)].map((item,index)=>(
-  <PaginationItem onClick={()=>{changePage(index,5)}} active={index==postContent.PageNumber}  key={index} >
+  <PaginationItem onClick={()=>{changePage(index+1,3)}} active={index==postContent.PageNumber-1}  key={index} >
     <PaginationLink >
     {index+1}
     </PaginationLink>
