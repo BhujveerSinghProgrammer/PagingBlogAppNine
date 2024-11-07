@@ -1,13 +1,22 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { loadAllPosts } from '../services/post-service';
-import { Row,Col } from 'reactstrap';
+import { Row,Col,Pagination,PaginationItem,PaginationLink, Container } from 'reactstrap';
 import Posts from './Posts';
 
 
 function NewFeed() 
 {
-const[postContent,setPostContent]=useState(null);
+const[postContent,setPostContent]=useState(
+   {
+      Contents:[],
+      LastPage:'',
+      PageNumber:'',
+      PageSize:'',
+      TotalElements:'',
+      TotalPages:''
+   }
+ );
 
   useEffect(()=>{
   //load all the posts from
@@ -37,6 +46,47 @@ const[postContent,setPostContent]=useState(null);
       <Posts post={post} key={post.Id} />
     ))
   }
+
+
+{/* paging implementation */}
+<Container className='text-center mt-1'>
+  <Pagination>
+  
+  <PaginationItem disabled={postContent.PageNumber==1}>
+    <PaginationLink previous>
+
+    </PaginationLink>
+  </PaginationItem>
+
+
+
+{
+[...Array(postContent.TotalPages)].map((item,index)=>(
+  <PaginationItem active={index==postContent.PageNumber}  key={index} >
+    <PaginationLink>
+    {index+1}
+    </PaginationLink>
+  </PaginationItem>
+  ))
+}
+
+
+
+
+
+
+
+<PaginationItem>
+    <PaginationLink next>
+
+    </PaginationLink>
+  </PaginationItem>
+
+
+
+
+</Pagination>
+</Container>
 
 
   </Col>

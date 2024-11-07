@@ -1,0 +1,48 @@
+Q1.//Important Note:- if we have a count value and we want to loop through that then what will we do?
+Ans:- first we will make this array and then will loop through this like given below:-
+we have postContent.TotalElements=21
+
+//For printing
+{
+[...Array(postContent.TotalPages)].map((item,index)=>(index))
+}
+
+//for using in pagination
+
+
+{
+[...Array(postContent.TotalPages)].map((item,index)=>(
+  <PaginationItem>
+    <PaginationLink>
+    {index+1}
+    </PaginationLink>
+  </PaginationItem>
+  ))
+}
+
+
+
+Q2.?How to disable the previous button and active current page.
+
+Ans:-
+==>disabling previous button in pagination
+
+ <PaginationItem disabled={postContent.PageNumber==1}>
+    <PaginationLink previous>
+
+    </PaginationLink>
+  </PaginationItem>
+
+==>Active current page
+
+{
+[...Array(postContent.TotalPages)].map((item,index)=>(
+  <PaginationItem active={index==postContent.PageNumber}  key={index} >
+    <PaginationLink>
+    {index+1}
+    </PaginationLink>
+  </PaginationItem>
+  ))
+}
+
+Q3.?
