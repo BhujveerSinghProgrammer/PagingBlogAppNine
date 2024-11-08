@@ -69,3 +69,5 @@ Note:- if we will not pass any value to PageSizeInput as 5 then it will automati
 onClick={()=>{changePage(index)}} 
 
 
+Q4.?How to show database's table's html?
+Ans:- 
