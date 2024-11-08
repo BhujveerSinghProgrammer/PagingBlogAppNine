@@ -46,10 +46,10 @@ function NewFeed() {
       <Row>
         <Col md={{ size: 10, offset: 1 }}>
           <h1>Blogs Count ({postContent?.TotalElements})</h1>
+
           {postContent?.Contents?.map((post) => (
             <Posts post={post} key={post.Id} />
           ))}
-
           {/* Pagination component */}
           <Container className="text-center mt-1">
             <Pagination size='lg'>
