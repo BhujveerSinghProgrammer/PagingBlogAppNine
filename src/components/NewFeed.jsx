@@ -9,7 +9,7 @@ function NewFeed() {
     Contents: [],
     LastPage: 0,
     PageNumber: 1,  // Start at page 1 (1-based)
-    PageSize: 5,   // Default page size
+    PageSize: 3,   // Default page size
     TotalElements: 0,
     TotalPages: 0
   });
@@ -34,6 +34,7 @@ function NewFeed() {
     loadAllPostsByPageNumberandPageSize(pageNumber, postContent.PageSize)
       .then((data) => {
         setPostContent(data);  // Update with new page data
+        window.scroll(0,0);
       })
       .catch((error) => {
         toast.error('Error in Loading Posts Pagewise');
@@ -51,10 +52,12 @@ function NewFeed() {
 
           {/* Pagination component */}
           <Container className="text-center mt-1">
-            <Pagination>
+            <Pagination size='lg'>
               {/* Previous button */}
               <PaginationItem disabled={postContent.PageNumber === 1}>
-                <PaginationLink previous onClick={() => changePage(postContent.PageNumber - 1)} />
+                <PaginationLink previous onClick={() => changePage(postContent.PageNumber - 1)} >
+                  Previous
+                </PaginationLink>
               </PaginationItem>
 
               {/* Page number buttons */}
@@ -70,7 +73,9 @@ function NewFeed() {
 
               {/* Next button */}
               <PaginationItem disabled={postContent.PageNumber === postContent.TotalPages}>
-                <PaginationLink next onClick={() => changePage(postContent.PageNumber + 1)} />
+                <PaginationLink next onClick={() => changePage(postContent.PageNumber + 1)}>
+                  Next
+                </PaginationLink>
               </PaginationItem>
             </Pagination>
           </Container>
