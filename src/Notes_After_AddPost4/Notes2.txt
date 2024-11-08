@@ -67,3 +67,5 @@ Note:- if we will not pass any value to PageSizeInput as 5 then it will automati
 
 
 onClick={()=>{changePage(index)}} 
+
+
